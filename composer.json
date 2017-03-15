@@ -1,0 +1,20 @@
+{
+    "name": "xybingbing/weixin_pay_sdk",
+    "description": "微信支付相关的所有接口",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "xybingbing",
+            "email": "xybingbing@live.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "xybingbing\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}
