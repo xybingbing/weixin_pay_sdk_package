@@ -515,6 +515,7 @@ class pay extends weixin_pay_sdk{
         $response = self::postXmlCurl(self::SHORT_URL,$xmldata,false,5);
     }
 }
+
 //微信刷卡支付
 class weixin_pay_card extends pay{
     /*
@@ -612,6 +613,7 @@ class weixin_pay_card extends pay{
         return $response = self::postXmlCurl(self::AUTHCODE_OPENID_URL,$xmldata,false,5);
     }
 }
+
 //微信公众号支付
 class weixin_pay extends pay{
     /*
@@ -665,6 +667,7 @@ class weixin_pay extends pay{
         return $params;
     }
 }
+
 //扫码支付
 class weixin_scancode_pay extends pay{
     /*
@@ -695,6 +698,7 @@ class weixin_scancode_pay extends pay{
         return parent::unifiedorder($orderid,$body,$total_fee,$notify_url,$atta);
     }
 }
+
 //APP支付
 class weixin_app_pay extends pay{
     /*
@@ -746,6 +750,7 @@ class weixin_app_pay extends pay{
         return $params;
     }
 }
+
 //微信优惠劵卡卷(创建优惠劵还没有提供接口)
 class weixin_coupon extends weixin_pay_sdk{
     /*
@@ -842,6 +847,7 @@ class weixin_coupon extends weixin_pay_sdk{
         return $response = self::postXmlCurl(self::QUERY_COUPON_INFO_URL,$xmldata,false,5);
     }
 }
+
 //微信红包
 class weixin_bonus extends weixin_pay_sdk{
     /*
@@ -934,6 +940,7 @@ class weixin_bonus extends weixin_pay_sdk{
         return $response = self::postXmlCurl(self::QUERY_RED_PACK_INFO,$xmldata,true,5);
     }
 }
+
 //微信付款
 class weixin_payment extends weixin_pay_sdk{
     /*
@@ -987,6 +994,7 @@ class weixin_payment extends weixin_pay_sdk{
         return $response = self::postXmlCurl(self::QUERY_TRANSFERS_URL,$xmldata,true,5);
     }
 }
+
 //微信支付结果通知类
 class weixin_notify extends weixin_pay_sdk{
     /**
