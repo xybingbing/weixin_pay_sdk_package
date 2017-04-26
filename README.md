@@ -1,14 +1,14 @@
-#微信商户平台所以接口相关
+微信商户平台所以接口相关
 
 
 
-##1.安装
+1.安装
 ```
 composer require xybingbing/weixin_pay_sdk
 ```
 
 
-##2.使用
+2.使用
 ```
 require "vendor/autoload.php";
 ```
