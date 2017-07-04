@@ -47,7 +47,7 @@ class weixin_pay_sdk{
     /**
      * 签名
      */
-    protected function get_sign($options,$key=''){
+    protected static function get_sign($options,$key=''){
     		$key=!empty($key) ? $key : $this->paykey;
         ksort($options);
         $string=self::ToUrlParams($options);
@@ -223,6 +223,7 @@ class weixin_pay_sdk{
     }
     //输出日志
     protected static function log($log){
+    		
         file_put_contents('weixin_log.txt','时间:'.date('Y-m-d H:i:s').PHP_EOL.'消息:'.$log.PHP_EOL.PHP_EOL.PHP_EOL,FILE_APPEND);
         exit;
     }

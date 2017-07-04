@@ -32,7 +32,7 @@ class weixin_coupon extends weixin_pay_sdk{
             'type'=> (!empty($atta['type'])) ? $atta['type'] : 'XML',	//否，协议类型 【目前仅支持默认XML】
         );
         foreach($options as $opk=>$opv){ if(empty($opv)){ unset($options[$opk]); } }	//删除为空的参数
-        $sign=$this->get_sign($options);		//获取签名
+        $sign=self::get_sign($options);		//获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::SEND_COUPON_URL,$xmldata,true,5);
@@ -60,7 +60,7 @@ class weixin_coupon extends weixin_pay_sdk{
             'type'=> (!empty($atta['type'])) ? $atta['type'] : 'XML',	//否，协议类型 【目前仅支持默认XML】
         );
         foreach($options as $opk=>$opv){ if(empty($opv)){ unset($options[$opk]); } }	//删除为空的参数
-        $sign=$this->get_sign($options);		//获取签名
+        $sign=self::get_sign($options);		//获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::QUERY_COUPON_STOCK_URL,$xmldata,false,5);
@@ -92,7 +92,7 @@ class weixin_coupon extends weixin_pay_sdk{
             'type'=> (!empty($atta['type'])) ? $atta['type'] : 'XML',	//否，协议类型 【目前仅支持默认XML】
         );
         foreach($options as $opk=>$opv){ if(empty($opv)){ unset($options[$opk]); } }	//删除为空的参数
-        $sign=$this->get_sign($options);		//获取签名
+        $sign=self::get_sign($options);		//获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::QUERY_COUPON_INFO_URL,$xmldata,false,5);

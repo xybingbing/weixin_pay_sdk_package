@@ -29,7 +29,7 @@ class pay extends weixin_pay_sdk{
             'openid'=> (!empty($atta['openid'])) ? $atta['openid'] : '',    //是，用户标识
         );
         foreach($options as $opk=>$opv){ if(empty($opv)){ unset($options[$opk]); } }    //删除为空的参数
-        $sign=$this->get_sign($options);    //获取签名
+        $sign=self::get_sign($options);    //获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::UNIFIEDORDER_URL,$xmldata,false,5);
@@ -67,7 +67,7 @@ class pay extends weixin_pay_sdk{
             }
         }
         foreach($options as $opk=>$opv){ if(empty($opv)){ unset($options[$opk]); } }	//删除为空的参数
-        $sign=$this->get_sign($options);		//获取签名
+        $sign=self::get_sign($options);		//获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::ORDER_QUERY_URL,$xmldata,false,5);
@@ -102,7 +102,7 @@ class pay extends weixin_pay_sdk{
             }
         }
         foreach($options as $opk=>$opv){ if(empty($opv)){ unset($options[$opk]); } }	//删除为空的参数
-        $sign=$this->get_sign($options);    //获取签名
+        $sign=self::get_sign($options);    //获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::CLOSE_ORDER_URL,$xmldata,false,5);
@@ -149,7 +149,7 @@ class pay extends weixin_pay_sdk{
             }
         }
         foreach($options as $opk=>$opv){ if(empty($opv)){ unset($options[$opk]); } }	//删除为空的参数
-        $sign=$this->get_sign($options);		//获取签名
+        $sign=self::get_sign($options);		//获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::REFUND_URL,$xmldata,true,5);
@@ -195,7 +195,7 @@ class pay extends weixin_pay_sdk{
             }
         }
         foreach($options as $opk=>$opv){ if(empty($opv)){ unset($options[$opk]); } }	//删除为空的参数
-        $sign=$this->get_sign($options);		//获取签名
+        $sign=self::get_sign($options);		//获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::REFUND_QUERY_URL,$xmldata,false,5);
@@ -220,7 +220,7 @@ class pay extends weixin_pay_sdk{
             'bill_type'=> (!empty($atta['bill_type'])) ? $atta['bill_type'] : 'ALL', //是，返回当日所有订单信息，默认值 ALL.  SUCCESS，返回当日成功支付的订单 REFUND，返回当日退款订单
         );
         foreach($options as $opk=>$opv){ if(empty($opv)){ unset($options[$opk]); } }	//删除为空的参数
-        $sign=$this->get_sign($options);
+        $sign=self::get_sign($options);
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         $response = self::postXmlCurl(self::DOWNLOAD_BILL_URL,$xmldata,false,5);
@@ -242,7 +242,7 @@ class pay extends weixin_pay_sdk{
             'nonce_str'=> self::getNonceStr(), //是，随机字符串
             'long_url' => $url, //是，需要转换的URL，签名用原串，传输需URLencode
         );
-        $sign=$this->get_sign($options);
+        $sign=self::get_sign($options);
         $options['sign']=$sign;
         $options['long_url']=urlencode($options['long_url']);
         $xmldata=self::ArrayXml($options);

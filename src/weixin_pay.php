@@ -51,7 +51,7 @@ class weixin_pay extends pay{
         $params['nonceStr']  = self::getNonceStr();
         $params['package']   = 'prepay_id='.$prepay_id;
         $params['signType']  = 'MD5';
-        $params['paySign']   = $this->get_sign($params);
+        $params['paySign']   = self::get_sign($params);
         return $params;
     }
 }

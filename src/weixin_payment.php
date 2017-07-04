@@ -32,7 +32,7 @@ class weixin_payment extends weixin_pay_sdk{
             'spbill_create_ip'=> self::getIP(),
         );
         foreach($options as $opk=>$opv){ if(empty($opv)){ unset($options[$opk]); } }	//删除为空的参数
-        $sign=$this->get_sign($options);		//获取签名
+        $sign=self::get_sign($options);		//获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::TRANSFERS_URL,$xmldata,true,5);
@@ -49,7 +49,7 @@ class weixin_payment extends weixin_pay_sdk{
             'nonce_str'=> self::getNonceStr(), //是，随机字符串
             'partner_trade_no'=> $orderid, //是，商户订单号，需保持唯一性
         );
-        $sign=$this->get_sign($options);		//获取签名
+        $sign=self::get_sign($options);		//获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::QUERY_TRANSFERS_URL,$xmldata,true,5);

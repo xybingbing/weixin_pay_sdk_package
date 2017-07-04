@@ -49,7 +49,7 @@ class weixin_app_pay extends pay{
         $params['package']  = 'Sign=WXPay';
         $params['noncestr'] = self::getNonceStr();
         $params['timestamp']= (string)time();
-        $params['sign']   	= $this->get_sign($params);
+        $params['sign']   	= self::get_sign($params);
         return $params;
     }
 }

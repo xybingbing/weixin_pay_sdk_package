@@ -16,7 +16,7 @@ class weixin_notify extends weixin_pay_sdk{
                 if($data['result_code']=='SUCCESS'){
                 		$sign_old=$data['sign'];
 					unset($data['sign']);
-                    $sign=$this->get_sign($data,$key);		//获取签名
+                    $sign=self::get_sign($data,$key);		//获取签名
                     if($sign==$sign_old){
                     		return $data;
                     }else{

@@ -38,7 +38,7 @@ class weixin_pay_card extends pay{
             'auth_code'	  => $auth_code,  //是，扫码支付授权码，设备读取用户微信中的条码或者二维码信息
         );
         foreach($options as $opk=>$opv){ if(empty($opv)){ unset($options[$opk]); } }	//删除为空的参数
-        $sign=$this->get_sign($options);		//获取签名
+        $sign=self::get_sign($options);		//获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::MICROPAY_URL,$xmldata,false,5);
@@ -76,7 +76,7 @@ class weixin_pay_card extends pay{
             }
         }
         foreach($options as $opk=>$opv){ if(empty($opv)){ unset($options[$opk]); } }	//删除为空的参数
-        $sign=$this->get_sign($options);		//获取签名
+        $sign=self::get_sign($options);		//获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::REVERSE_URL,$xmldata,true,5);
@@ -93,7 +93,7 @@ class weixin_pay_card extends pay{
             'nonce_str'=> self::getNonceStr(), //是，随机字符串
             'auth_code'=> $auth_code,
         );
-        $sign=$this->get_sign($options);		//获取签名
+        $sign=self::get_sign($options);		//获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::AUTHCODE_OPENID_URL,$xmldata,false,5);

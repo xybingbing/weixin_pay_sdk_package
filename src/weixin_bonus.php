@@ -32,7 +32,7 @@ class weixin_bonus extends weixin_pay_sdk{
             'act_name'=> (!empty($bonus_data['act_name'])) ? $bonus_data['act_name'] : '活动名称',
             'remark'=> (!empty($bonus_data['remark'])) ? $bonus_data['remark'] : '备注信息',
         );
-        $sign=$this->get_sign($options);		//获取签名
+        $sign=self::get_sign($options);		//获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::SEND_RED_PACK,$xmldata,true,5);
@@ -67,7 +67,7 @@ class weixin_bonus extends weixin_pay_sdk{
             'act_name'=> (!empty($bonus_data['act_name'])) ? $bonus_data['act_name'] : '活动名称',
             'remark'=> (!empty($bonus_data['remark'])) ? $bonus_data['remark'] : '备注信息',
         );
-        $sign=$this->get_sign($options);		//获取签名
+        $sign=self::get_sign($options);		//获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::SEND_GROUP_RED_PACK,$xmldata,true,5);
@@ -88,7 +88,7 @@ class weixin_bonus extends weixin_pay_sdk{
             'mch_billno'=> $orderid,
             'bill_type'	=> (!empty($atta['bill_type'])) ? $atta['bill_type'] : 'MCHT',
         );
-        $sign=$this->get_sign($options);		//获取签名
+        $sign=self::get_sign($options);		//获取签名
         $options['sign']=$sign;
         $xmldata=self::ArrayXml($options);
         return $response = self::postXmlCurl(self::QUERY_RED_PACK_INFO,$xmldata,true,5);
