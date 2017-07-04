@@ -47,10 +47,11 @@ class weixin_pay_sdk{
     /**
      * 签名
      */
-    protected function get_sign($options){
+    protected function get_sign($options,$key=''){
+    		$key=!empty($key) ? $key : $this->paykey;
         ksort($options);
         $string=self::ToUrlParams($options);
-        $string=$string.'&key='.$this->paykey;
+        $string=$string.'&key='.$key;
         $string = md5($string);
         $result = strtoupper($string);
         return $result;
